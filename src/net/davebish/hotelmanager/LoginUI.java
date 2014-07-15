@@ -1,7 +1,5 @@
 package net.davebish.hotelmanager;
 
-
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -15,7 +13,6 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -94,7 +91,6 @@ public class LoginUI extends JFrame {
 			// do something in response to cancel clicked
 			LoginUI.this.dispose();
 		}
-
 	}
 
 	private class btnLoginListener implements ActionListener {
@@ -103,10 +99,12 @@ public class LoginUI extends JFrame {
 			try {
 				Login l = new Login();
 				if (l.IsvalidUser(txtUserName.getText(),
-						new String(pwdPassword.getPassword())))
-					JOptionPane.showMessageDialog(LoginUI.this,
-							"Welcome to the Hotel Manager");
-				else {
+						new String(pwdPassword.getPassword()))) {
+					// Open the HomeUI frame
+					HomeUI homeUI = new HomeUI();
+					homeUI.setVisible(true);
+					LoginUI.this.dispose();
+				} else {
 					JOptionPane.showMessageDialog(LoginUI.this,
 							"Incorrect UserName/Password combination");
 					pwdPassword.setText("");
