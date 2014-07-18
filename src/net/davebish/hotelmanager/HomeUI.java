@@ -3,6 +3,7 @@ package net.davebish.hotelmanager;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -27,6 +28,7 @@ public class HomeUI extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setupMenu();		
 		setContentPane(contentPane);
+		setLocationRelativeTo(null);
 	}
 
 	private void setupMenu() {
@@ -40,6 +42,13 @@ public class HomeUI extends JFrame {
 				new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						// handle the new reservation request
+						try {
+							ReservationNewChangeUI dialog = new ReservationNewChangeUI(HomeUI.this, true);
+							dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+							dialog.setVisible(true);
+						} catch (Exception ex) {
+							ex.printStackTrace();
+						}
 					}
 				});
 		

@@ -5,7 +5,7 @@ import java.util.Properties;
 
 public class LoginDB {
 	private static final String dbClassName = "com.mysql.jdbc.Driver";
-	private static final String CONNECTION = "jdbc:mysql://127.0.0.1/Hotel_Manager?user=hmuser&password=hmpwd";
+	private static final String CONNECTION = "jdbc:mysql://127.0.0.1/HotelManager?user=hmuser&password=hmpwd";
 	private Connection c = null;
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
