@@ -11,6 +11,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
+import de.wannawork.jcalendar.JCalendarComboBox;
+import org.joda.time.DateTime;
 
 public class ReservationNewChangeUI extends JDialog {
 
@@ -49,6 +51,27 @@ public class ReservationNewChangeUI extends JDialog {
 		txtLastName.setBounds(139, 51, 225, 28);
 		contentPanel.add(txtLastName);
 		txtLastName.setColumns(10);
+		
+		JCalendarComboBox calcbxArrivalDate = new JCalendarComboBox();
+		calcbxArrivalDate.setBounds(139, 81, 225, 28);
+		DateTime currDate = new DateTime();
+		calcbxArrivalDate.setDate(currDate.toDate());
+		contentPanel.add(calcbxArrivalDate);		
+		JLabel lblArrivalDate = new JLabel("Arrival Date:");
+		lblArrivalDate.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblArrivalDate.setBounds(42, 87, 85, 16);
+		contentPanel.add(lblArrivalDate);
+		
+		JLabel lblDepartureDate = new JLabel("Departure Date:");
+		lblDepartureDate.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblDepartureDate.setBounds(20, 116, 107, 16);
+		contentPanel.add(lblDepartureDate);
+		
+		JCalendarComboBox calcbxDepartureDate = new JCalendarComboBox();
+		calcbxDepartureDate.setBounds(139, 116, 225, 28);
+		DateTime nextDay = currDate.plusDays(1);
+		calcbxDepartureDate.setDate(nextDay.toDate());
+		contentPanel.add(calcbxDepartureDate);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -65,5 +88,7 @@ public class ReservationNewChangeUI extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+		
+		setLocationRelativeTo(null);
 	}
 }
