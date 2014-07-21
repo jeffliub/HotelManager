@@ -18,8 +18,9 @@ import java.awt.Color;
 import javax.swing.JSpinner;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.border.EtchedBorder;
 import javax.swing.JRadioButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ReservationNewChangeUI extends JDialog {
 
@@ -32,6 +33,7 @@ public class ReservationNewChangeUI extends JDialog {
 	private JTextField txtAddress;
 	private JTextField txtCity;
 	private JTextField txtZipCode;
+	private Reservation reservation;
 
 	/**
 	 * Create the dialog.
@@ -127,7 +129,6 @@ public class ReservationNewChangeUI extends JDialog {
 		lblRate.setBounds(140, 270, 61, 16);
 		contentPanel.add(lblRate);
 		
-		txtRoomRate = new JTextField();
 		txtRoomRate.setBounds(213, 264, 262, 28);
 		contentPanel.add(txtRoomRate);
 		txtRoomRate.setColumns(10);
@@ -237,6 +238,12 @@ public class ReservationNewChangeUI extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						// validate the input fields using the Reservation class
+						
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
